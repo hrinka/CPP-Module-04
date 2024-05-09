@@ -5,37 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:46:56 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 21:59:44 by hrinka           ###   ########.fr       */
+/*   Created: 2024/05/09 19:02:33 by hrinka            #+#    #+#             */
+/*   Updated: 2024/05/09 19:02:56 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 int main(void)
 {
-	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-	const WrongAnimal* meta2 = new WrongAnimal();
-	const WrongAnimal* j2 = new WrongCat();
-	j2->makeSound();
-	meta2->makeSound();
 
-	delete  meta;
-	delete  j;
-	delete  i;
-	delete  meta2;
-	delete j2;
+	Animal* animals[4];
+	animals[0] = new Dog();
+	animals[1] = new Dog();
+	animals[2] = new Cat();
+	animals[3] = new Cat();
+	int count = 0;
+	while (count < 4)
+	{
+		delete animals[count];
+		count++;
+	}
+
+	delete i;
+	delete j;//should not create a leak
 
 	return 0;
 }

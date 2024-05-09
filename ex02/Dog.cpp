@@ -15,17 +15,21 @@
 Dog::Dog()
 {
 	this->type = "Dog";
+	this->attribute = new Brain();
 	std::cout << "call constructer of dog" << std::endl;
 }
 
 Dog::~Dog()
 {
+	delete this->attribute;
 	std::cout << "call destructer from dog" << std::endl;
 }
 
 Dog::Dog(Dog &copy)
 {
 	this->type = copy.type;
+	this->attribute = new Brain();
+	*(this->attribute) = *(copy.attribute);
 	std::cout << "call copy constructer dog" << std::endl;
 }
 
@@ -44,5 +48,7 @@ Dog &Dog::operator=(Dog &copy)
 {
 	std::cout << "call operator from dog" << std::endl;
 	this->type = copy.type;
+	this->attribute = new Brain();
+	*(this->attribute) = *(copy.attribute);
 	return *this;
 }
