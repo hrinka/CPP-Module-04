@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:02:33 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 19:02:56 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 19:53:21 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,27 @@ int main(void)
 		count++;
 	}
 
+	Cat cat;
+	cat.setIdea(0, "idea1");
+	cat.setIdea(1, "idea2");
+
+	std::cout << "cat idea" << cat.getIdea(0) << std::endl;
+	std::cout << "cat idea" << cat.getIdea(0) << std::endl;
+
+	Cat cat2;
+	cat2 = cat;
+	cat.setIdea(0, "IDEA1");
+	cat.setIdea(1, "IDEA2");
+	std::cout << "cat idea" << cat2.getIdea(0) << std::endl;
+	std::cout << "cat idea" << cat2.getIdea(1) << std::endl;
+
 	delete i;
 	delete j;//should not create a leak
 
 	return 0;
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+// 	system("leaks -q Animal");
+// }

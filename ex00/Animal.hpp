@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:48:22 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/08 22:56:10 by hrinka           ###   ########.fr       */
+/*   Created: 2024/05/09 18:53:18 by hrinka            #+#    #+#             */
+/*   Updated: 2024/05/10 19:49:17 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ class Animal
 	public:
 		Animal();
 		virtual ~Animal();
-		Animal(Animal &copy);
-		Animal &operator=(Animal const &copy);
+		Animal(const Animal &copy);
+		Animal &operator=(const Animal &copy);
 		virtual void makeSound() const;
 		virtual std::string getType() const;
 };
+
 #endif

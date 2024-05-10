@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:50:10 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 20:03:53 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 20:21:55 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ class Cat : public AAnimal
 		Cat();
 		~Cat();
 		Cat(Cat &copy);
-		Cat &operator=(Cat &copy);
+		Cat &operator=(const Cat &copy);
 		void makeSound() const;
 		std::string getType() const;
+		void setIdea(int index, std::string idea);
+		std::string &getIdea(size_t index);
 };
 
 #endif

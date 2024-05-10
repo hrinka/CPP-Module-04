@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:00:45 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 19:01:06 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 20:19:37 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@
 
 class Brain
 {
-	protected:
+	private:
 		std::string ideas[100];
 	public:
 		Brain();
 		~Brain();
+		Brain(const Brain &copy);
+		Brain &operator=(const Brain &copy);
+
+		void setIdea(int index, std::string idea);
+		std::string &getIdea(size_t index);
 };
 
 #endif

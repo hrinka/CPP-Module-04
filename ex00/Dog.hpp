@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:51:13 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/08 21:51:21 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 19:50:13 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class Dog : public Animal
 	public:
 		Dog();
 		~Dog();
-		Dog(Dog &copy);
-		Dog &operator=(Dog &copy);
+		Dog(const Dog &copy);
+		Dog &operator=(const Dog &copy);
 		void makeSound() const;
 		std::string getType() const;
 };

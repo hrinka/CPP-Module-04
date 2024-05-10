@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/08 21:47:28 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/08 22:56:51 by hrinka           ###   ########.fr       */
+/*   Created: 2024/05/09 18:54:01 by hrinka            #+#    #+#             */
+/*   Updated: 2024/05/10 19:36:27 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Animal::~Animal()
 	std::cout << "call destructer of Animal" << std::endl;
 }
 
-Animal::Animal(Animal &copy)
+Animal::Animal(const Animal &copy)
 {
 	this->type = copy.type;
 	std::cout << "call copy constructer of Animal" << std::endl;
@@ -40,9 +40,12 @@ std::string Animal::getType() const
 	return this->type;
 }
 
-Animal &Animal::operator=(Animal const &copy)
+Animal &Animal::operator=(const Animal &copy)
 {
-	this->type = copy.type;
-	std::cout << "call operator= of Animal" << std::endl;
+	if (this != &copy)
+	{
+		std::cout << "call operator= of Animal" << std::endl;
+		this->type = copy.type;
+	}
 	return *this;
 }

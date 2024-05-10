@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:51:31 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 22:04:33 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 19:51:27 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ Dog::~Dog()
 	std::cout << "call destructer from dog" << std::endl;
 }
 
-Dog::Dog(Dog &copy)
+Dog::Dog(const Dog &copy)
 {
-	this->type = copy.type;
 	std::cout << "call copy constructer dog" << std::endl;
+	this->type = copy.type;
 }
 
 void Dog::makeSound() const
@@ -40,9 +40,12 @@ std::string Dog::getType() const
 	return this->type;
 }
 
-Dog &Dog::operator=(Dog &copy)
+Dog &Dog::operator=(const Dog &copy)
 {
-	std::cout << "call operator from dog" << std::endl;
-	this->type = copy.type;
+	if (this != &copy)
+	{
+		std::cout << "call operator from dog" << std::endl;
+		this->type = copy.type;
+	}
 	return *this;
 }

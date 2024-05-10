@@ -6,7 +6,7 @@
 /*   By: hrinka <hrinka@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:51:31 by hrinka            #+#    #+#             */
-/*   Updated: 2024/05/09 22:04:33 by hrinka           ###   ########.fr       */
+/*   Updated: 2024/05/10 20:22:56 by hrinka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Dog::~Dog()
 	std::cout << "call destructer from dog" << std::endl;
 }
 
-Dog::Dog(Dog &copy)
+Dog::Dog(const Dog &copy)
 {
 	this->type = copy.type;
 	this->attribute = new Brain();
@@ -44,11 +44,26 @@ std::string Dog::getType() const
 	return this->type;
 }
 
-Dog &Dog::operator=(Dog &copy)
+Dog &Dog::operator=(const Dog &copy)
 {
-	std::cout << "call operator from dog" << std::endl;
-	this->type = copy.type;
-	this->attribute = new Brain();
-	*(this->attribute) = *(copy.attribute);
+	if (this != &copy)
+	{
+		std::cout << "call operator from dog" << std::endl;
+		Brain *newBrain = new Brain();
+		*newBrain = *(copy.attribute);
+		delete this->attribute;
+		this->attribute = newBrain;
+		this->type = copy.type;
+	}
 	return *this;
+}
+
+void Dog::setIdea(int index, std::string idea)
+{
+	attribute->setIdea(index, idea);
+}
+
+std::string &Dog::getIdea(size_t index)
+{
+	return attribute->getIdea(index);
 }
